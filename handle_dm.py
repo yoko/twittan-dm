@@ -10,7 +10,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from simpleoauth_gae.twitter import OAuthApi
 
 
-class LogSenderHandler(InboundMailHandler):
+class DMHandler(InboundMailHandler):
   def receive(self, message):
     logging.info(message.sender)
 
@@ -42,7 +42,7 @@ class LogSenderHandler(InboundMailHandler):
 
 
 def main():
-  application = webapp.WSGIApplication([LogSenderHandler.mapping()], debug=True)
+  application = webapp.WSGIApplication([DMHandler.mapping()], debug=True)
   run_wsgi_app(application)
 
 
